@@ -1,0 +1,13 @@
+diff --git a/node_modules/@twilio/webrtc/lib/util/index.js b/node_modules/@twilio/webrtc/lib/util/index.js
+index 3719b0a..5a136f9 100644
+--- a/node_modules/@twilio/webrtc/lib/util/index.js
++++ b/node_modules/@twilio/webrtc/lib/util/index.js
+@@ -148,7 +148,7 @@ function guessBrowser(userAgent) {
+   if (/Firefox|FxiOS/.test(userAgent)) {
+     return 'firefox';
+   }
+-  if (/Safari/.test(userAgent)) {
++  if (/Safari|iPhone|iPad/.test(userAgent)) {
+     return 'safari';
+   }
+   return null;

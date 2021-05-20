@@ -15,7 +15,7 @@ import './types';
 import { ChatProvider } from './components/ChatProvider';
 import { VideoProvider } from './components/VideoProvider';
 import useConnectionOptions from './utils/useConnectionOptions/useConnectionOptions';
-import UnsupportedBrowserWarning from './components/UnsupportedBrowserWarning/UnsupportedBrowserWarning';
+// import UnsupportedBrowserWarning from './components/UnsupportedBrowserWarning/UnsupportedBrowserWarning';
 
 const VideoApp = () => {
   const { error, setError } = useAppState();
@@ -34,24 +34,22 @@ const VideoApp = () => {
 ReactDOM.render(
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
-    <UnsupportedBrowserWarning>
-      <Router>
-        <AppStateProvider>
-          <Switch>
-            <PrivateRoute exact path="/">
-              <VideoApp />
-            </PrivateRoute>
-            <PrivateRoute path="/room/:URLRoomName">
-              <VideoApp />
-            </PrivateRoute>
-            <Route path="/login">
-              <LoginPage />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-        </AppStateProvider>
-      </Router>
-    </UnsupportedBrowserWarning>
+    <Router>
+      <AppStateProvider>
+        <Switch>
+          <PrivateRoute exact path="/">
+            <VideoApp />
+          </PrivateRoute>
+          <PrivateRoute path="/room/:URLRoomName">
+            <VideoApp />
+          </PrivateRoute>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      </AppStateProvider>
+    </Router>
   </MuiThemeProvider>,
   document.getElementById('root')
 );
