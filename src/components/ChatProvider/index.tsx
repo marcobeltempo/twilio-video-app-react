@@ -24,20 +24,18 @@ export const ChatProvider: React.FC = ({ children }) => {
   const [hasUnreadMessages, setHasUnreadMessages] = useState(false);
   const [chatClient, setChatClient] = useState<Client>();
 
-  const connect = useCallback(
-    (token: string) => {
-      Client.create(token)
-        .then(client => {
-          //@ts-ignore
-          window.chatClient = client;
-          setChatClient(client);
-        })
-        .catch(() => {
-          onError(new Error("There was a problem connecting to Twilio's conversation service."));
-        });
-    },
-    [onError]
-  );
+  const connect = useCallback((token: string) => {
+    Client.create(token)
+      .then(client => {
+        //@ts-ignore
+        window.chatClient = client;
+        setChatClient(client);
+      })
+      .catch(() => {
+        // onError(new Error("There was a problem connecting to Twilio's conversation service."));
+        console.error("There was a problem connecting to Twilio's conversation service.");
+      });
+  }, []);
 
   useEffect(() => {
     if (conversation) {
